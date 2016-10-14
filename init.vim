@@ -39,6 +39,9 @@ Plugin 'vim-airline/vim-airline'
 Plugin 'frankier/neovim-colors-solarized-truecolor-only'
 Plugin 'vim-airline/vim-airline-themes'
 Plugin 'qpkorr/vim-bufkill'
+Plugin 'rust-lang/rust.vim'
+"Plugin 'gilligan/vim-lldb'
+Plugin 'critiqjo/lldb.nvim'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -80,6 +83,17 @@ set hidden
 set splitbelow
 " Behave like a normal text editor and don't wrap lines
 set nowrap
+
+" better mouse scrolling
+" for some reason iterm2 on one of my macs hadles scrolling differently
+" causing vim to scroll way to fast. Make sure one scroll event scrolls one
+" line.
+" (This should probably be mac specific)
+map <ScrollWheelUp> <C-Y>
+map <S-ScrollWheelUp> <C-U>
+map <ScrollWheelDown> <C-E>
+map <S-ScrollWheelDown> <C-D>
+
 
 "
 " Color Scheme
