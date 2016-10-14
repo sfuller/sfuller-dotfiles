@@ -30,6 +30,7 @@ Plugin 'VundleVim/Vundle.vim'
 Plugin 'scrooloose/syntastic'
 Plugin 'Valloric/YouCompleteMe'
 Plugin 'wincent/command-t'
+Plugin 'ctrlpvim/ctrlp.vim'
 Plugin 'scrooloose/nerdcommenter'
 Plugin 'OmniSharp/omnisharp-vim'
 Plugin 'tpope/vim-dispatch'
@@ -72,7 +73,13 @@ set backspace=indent,eol,start
 set nu
 set mouse=a
 syntax on
-
+" Turn on hidden buffer mode - Allows buffers to be hidden without saving
+" vim will still prompt you when attempting to quit with unsaved buffers.
+set hidden
+" Open new splits (like preview window) on bottom of screen
+set splitbelow
+" Behave like a normal text editor and don't wrap lines
+set nowrap
 
 "
 " Color Scheme
@@ -81,14 +88,6 @@ syntax on
 set termguicolors
 set background=dark
 colorscheme solarized
-
-
-"
-" Keymappings
-"
-" Buffer next/previous with leader + '[' / ']' keys
-map <leader>[ :bp<cr>
-map <leader>] :bn<cr>
 
 
 "
@@ -109,5 +108,27 @@ let g:airline#extensions#tabline#enabled=1
 let g:airline_theme='powerlineish'
 
 
+"
+" Omnisharp Configuration
+"
+" Omnisharp-server is slow. The default timeout is 1 second and that's way to short.
+let g:OmniSharp_timeout=60
 
+"
+" Keymappings
+"
+" Buffer next/previous with leader + '[' / ']' keys
+map <leader>[ :bp<cr>
+map <leader>] :bn<cr>
+
+" Omnisharp key mappings
+autocmd FileType cs nnoremap <leader>g :OmniSharpGotoDefinition<cr>
+autocmd FileType cs nnoremap <leader>fi :OmniSharpFindImplementations<cr>
+autocmd FileType cs nnoremap <leader>ft :OmniSharpFindType<cr>
+autocmd FileType cs nnoremap <leader>fs :OmniSharpFindSymbol<cr>
+autocmd FileType cs nnoremap <leader>fu :OmniSharpFindUsages<cr>
+autocmd FileType cs nnoremap <leader>fm :OmniSharpFindMembers<cr>
+autocmd FileType cs nnoremap <leader>x  :OmniSharpFixIssue<cr>
+autocmd FileType cs nnoremap <leader>fx :OmniSharpFixUsings<cr>
+autocmd FileType cs nnoremap <leader>tt :OmniSharpTypeLookup<cr>
 
