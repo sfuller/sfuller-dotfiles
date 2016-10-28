@@ -123,17 +123,41 @@ let g:airline_theme='powerlineish'
 
 
 "
+" Syntastic Configuration
+"
+let g:syntastic_java_checkers = []
+
+
+"
 " Omnisharp Configuration
 "
 " Omnisharp-server is slow. The default timeout is 1 second and that's way to short.
 let g:OmniSharp_timeout=60
 
+
+"
+" Eclim Configuration
+"
+" Use omnicompletion so that eclim will work with YouCompleteMe
+let g:EclimCompletionMethod = 'omnifunc'
+
 "
 " Keymappings
 "
-" Buffer next/previous with leader + '[' / ']' keys
-map <leader>[ :bp<cr>
-map <leader>] :bn<cr>
+
+" Scroll wheel only scrolls 1 line at a time
+" (as close as we can get to smooth scrolling)
+:map <ScrollWheelUp> <C-Y>
+:map <S-ScrollWheelUp> <C-U>
+:map <ScrollWheelDown> <C-E>
+:map <S-ScrollWheelDown> <C-D>
+
+" Map Caps Lock to Escape
+:map <C-L> <ESC>
+
+" Buffer next/previous with Shift + '[' / ']' keys
+map { :bp<cr>
+map } :bn<cr>
 
 " Omnisharp key mappings
 autocmd FileType cs nnoremap <leader>g :OmniSharpGotoDefinition<cr>
@@ -144,5 +168,5 @@ autocmd FileType cs nnoremap <leader>fu :OmniSharpFindUsages<cr>
 autocmd FileType cs nnoremap <leader>fm :OmniSharpFindMembers<cr>
 autocmd FileType cs nnoremap <leader>x  :OmniSharpFixIssue<cr>
 autocmd FileType cs nnoremap <leader>fx :OmniSharpFixUsings<cr>
-autocmd FileType cs nnoremap <leader>tt :OmniSharpTypeLookup<cr>
+autocmd FileType cs nnoremap <leader>f<space> :OmniSharpTypeLookup<cr>
 
