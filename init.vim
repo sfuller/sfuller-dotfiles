@@ -84,16 +84,6 @@ set splitbelow
 " Behave like a normal text editor and don't wrap lines
 set nowrap
 
-" better mouse scrolling
-" for some reason iterm2 on one of my macs hadles scrolling differently
-" causing vim to scroll way to fast. Make sure one scroll event scrolls one
-" line.
-" (This should probably be mac specific)
-map <ScrollWheelUp> <C-Y>
-map <S-ScrollWheelUp> <C-U>
-map <ScrollWheelDown> <C-E>
-map <S-ScrollWheelDown> <C-D>
-
 
 "
 " Color Scheme
@@ -147,13 +137,13 @@ let g:EclimCompletionMethod = 'omnifunc'
 
 " Scroll wheel only scrolls 1 line at a time
 " (as close as we can get to smooth scrolling)
-:map <ScrollWheelUp> <C-Y>
-:map <S-ScrollWheelUp> <C-U>
-:map <ScrollWheelDown> <C-E>
-:map <S-ScrollWheelDown> <C-D>
+map <ScrollWheelUp> <C-Y>
+map <S-ScrollWheelUp> <C-U>
+map <ScrollWheelDown> <C-E>
+map <S-ScrollWheelDown> <C-D>
 
 " Map Caps Lock to Escape
-:map <C-L> <ESC>
+map <C-L> <ESC>
 
 " Buffer next/previous with Shift + '[' / ']' keys
 map { :bp<cr>
