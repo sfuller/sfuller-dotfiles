@@ -29,7 +29,7 @@ Plugin 'VundleVim/Vundle.vim'
 
 Plugin 'scrooloose/syntastic'
 Plugin 'Valloric/YouCompleteMe'
-Plugin 'wincent/command-t'
+"Plugin 'wincent/command-t'
 Plugin 'ctrlpvim/ctrlp.vim'
 Plugin 'scrooloose/nerdcommenter'
 Plugin 'OmniSharp/omnisharp-vim'
@@ -42,6 +42,7 @@ Plugin 'qpkorr/vim-bufkill'
 Plugin 'rust-lang/rust.vim'
 "Plugin 'gilligan/vim-lldb'
 Plugin 'critiqjo/lldb.nvim'
+Plugin 'scrooloose/nerdtree'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -83,13 +84,17 @@ set hidden
 set splitbelow
 " Behave like a normal text editor and don't wrap lines
 set nowrap
+" Highlight current line
+set cursorline
 
 
 "
 " Color Scheme
 " (I think this might be neovim specific)
 "
-set termguicolors
+if has('nvim')
+    set termguicolors
+endif
 set background=dark
 colorscheme solarized
 
@@ -110,7 +115,13 @@ set laststatus=2
 let g:airline_powerline_fonts=1
 let g:airline#extensions#tabline#enabled=1
 let g:airline_theme='powerlineish'
+let g:airline#extensions#tabline#middle_click_preserves_windows=1
+let g:airline#extensions#whitespace#enabled = 0
 
+"
+" YouCompleteMe Configuration
+"
+let g:ycm_global_ycm_extra_conf = '~/.vim/.ycm_extra_conf.py' 
 
 "
 " Syntastic Configuration
@@ -148,6 +159,9 @@ map <C-L> <ESC>
 " Buffer next/previous with Shift + '[' / ']' keys
 map { :bp<cr>
 map } :bn<cr>
+
+" Home key goes to first non-blank character in line
+map <Home> ^
 
 " Omnisharp key mappings
 autocmd FileType cs nnoremap <leader>g :OmniSharpGotoDefinition<cr>
