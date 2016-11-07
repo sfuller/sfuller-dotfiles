@@ -116,6 +116,8 @@ let g:airline_powerline_fonts=1
 let g:airline#extensions#tabline#enabled=1
 let g:airline_theme='powerlineish'
 let g:airline#extensions#tabline#middle_click_preserves_windows=1
+" Disable showing whitespace errors on airline because it's annoying. No-one
+" will ever follow whitespace rules in the real world :(
 let g:airline#extensions#whitespace#enabled = 0
 
 "
@@ -173,4 +175,10 @@ autocmd FileType cs nnoremap <leader>fm :OmniSharpFindMembers<cr>
 autocmd FileType cs nnoremap <leader>x  :OmniSharpFixIssue<cr>
 autocmd FileType cs nnoremap <leader>fx :OmniSharpFixUsings<cr>
 autocmd FileType cs nnoremap <leader>f<space> :OmniSharpTypeLookup<cr>
+
+" Eclim key mappings
+autocmd FileType java nnoremap <leader>g :JavaSearch -x declarations -a edit<cr>
+autocmd FileType java nnoremap <leader>fi :JavaSearch -x implementors<cr>
+autocmd FileType java nnoremap <leader>fu :JavaSearch -x all<cr>
+autocmd FileType java nnoremap <leader>x  :JavaCorrect<cr>
 
