@@ -182,3 +182,10 @@ autocmd FileType java nnoremap <leader>fi :JavaSearch -x implementors<cr>
 autocmd FileType java nnoremap <leader>fu :JavaSearch -x all<cr>
 autocmd FileType java nnoremap <leader>x  :JavaCorrect<cr>
 
+
+"
+" Autocommands
+"
+" Open NERDTree on startup
+autocmd vimenter * NERDTree
+
