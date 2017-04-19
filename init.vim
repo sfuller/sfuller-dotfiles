@@ -186,6 +186,7 @@ autocmd FileType java nnoremap <leader>x  :JavaCorrect<cr>
 "
 " Autocommands
 "
-" Open NERDTree on startup
-autocmd vimenter * NERDTree
-
+" Open NERDTree when vim is started with no arguments
+" (This is straight from the NERDTree readme)
+autocmd StdinReadPre * let s:std_in=1
+autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
